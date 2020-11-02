@@ -1,0 +1,13 @@
+# compiled object files
+*.o
+
+# temporary files
+*~
+
+# executable files
+*.out
+*/main
+*/test
+
+# .vscode settings
+**/.vscode/
