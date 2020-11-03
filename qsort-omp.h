@@ -7,6 +7,6 @@
 void 
 q_sort_iter(int *, long long);
 void 
-q_sort(int *, long long);
+q_sort(int *, long long, size_t = 4);
 
 #endif
