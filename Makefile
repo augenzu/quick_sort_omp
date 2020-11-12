@@ -1,6 +1,6 @@
 CC=g++
-CFLAGS=-c -std=c++17 -fopenmp
-LDFLAGS=-std=c++17 -fopenmp
+CFLAGS=-c -std=c++11 -fopenmp
+LDFLAGS=-std=c++11 -fopenmp
 
 all: main
 
