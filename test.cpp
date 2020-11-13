@@ -35,7 +35,6 @@ time_testing(const std::vector<size_t> &elm_cnts,
     std::ofstream fout{ fname };
 
     // save timings
-    fout << "num_threads: " << omp_get_num_threads() << std::endl;
     fout << "elm_cnts: ";
     for (auto elm_cnt: elm_cnts) {
         fout << elm_cnt << " ";

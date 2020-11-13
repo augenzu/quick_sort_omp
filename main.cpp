@@ -3,10 +3,16 @@
 int
 main(int argc, char **argv)
 {
-    std::vector<size_t> elm_cnts{ 1000, 2000, 4000, 8000, 16000, 32000, 64000, 128000, 256000 };
-    std::string fname = std::string("timings/") + argv[1] + ".txt";
+    int *data = test_data(1000000);
 
-    time_testing(elm_cnts, fname);
+    clock_t start = clock();
+    q_sort(data, 1000000);
+    clock_t end = clock();
+    double elapsed = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+  
+    std::string fname = std::string("timings/") + argv[1] + ".txt";
+    std::ofstream fout{ fname };
+    fout << elapsed << std::endl;
     
     return 0;
 }
