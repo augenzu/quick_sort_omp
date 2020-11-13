@@ -40,9 +40,10 @@ q_sort_iter(int *data, long long end)
 }
 
 void 
-q_sort(int *data, long long end, size_t n_threads) 
+q_sort(int *data, long long end) 
 {
-    #pragma omp parallel num_threads(n_threads) shared(data)
+    #pragma omp parallel num_threads(4) shared(data)
+    // then set it to 2; 4; 8; 16; ...
     {
         #pragma omp single nowait
         {

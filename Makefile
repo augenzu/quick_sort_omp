@@ -4,13 +4,7 @@ LDFLAGS=-std=c++11 -fopenmp
 
 all: main
 
-main: main_
-	./main
-
-test: main_
-	./main
-
-main_: main.o test.o qsort-omp.o generate-data.o
+main: main.o test.o qsort-omp.o generate-data.o
 	$(CC) $(LDFLAGS) main.o test.o qsort-omp.o generate-data.o -o main
 
 main.o: main.cpp
