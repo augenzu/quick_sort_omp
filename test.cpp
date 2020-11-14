@@ -3,8 +3,7 @@
 
 void
 time_testing(long long limit, 
-        const std::vector<size_t> &elm_cnts,
-        const std::string &fname)
+        const std::vector<size_t> &elm_cnts)
 {    
     // this is what we will return from this function
     // and exactly what we wanna get from this all stuff
@@ -32,15 +31,8 @@ time_testing(long long limit,
         delete[] data;
     }
 
-    std::ofstream fout{ fname };
-
     // save timings
-    fout << "elm_cnts:" << std::endl;
-    for (auto elm_cnt: elm_cnts) {
-        fout << std::setw(12) << elm_cnt;
-    }
-    fout << std::endl << "timings:" << std::endl;
     for (auto timing: timings) {
-        fout << std::setw(12) << std::setprecision(8) << std::fixed << timing;
+        std::cout << std::setw(12) << std::setprecision(8) << std::fixed << timing;
     }
 }

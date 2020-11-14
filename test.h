@@ -11,7 +11,6 @@
 #include <vector>
 
 void
-time_testing(long long, const std::vector<size_t> &,
-        const std::string &);
+time_testing(long long, const std::vector<size_t> &);
 
 #endif
