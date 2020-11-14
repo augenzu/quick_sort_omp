@@ -1,4 +1,5 @@
 #include "test.h"
+#include <iomanip>
 
 void
 time_testing(const std::vector<size_t> &nums_threads, 
@@ -39,18 +40,18 @@ time_testing(const std::vector<size_t> &nums_threads,
 
     // save timings
     fout << "nums_threads: ";
-    for (auto nums_thread: nums_threads) {
-        fout << nums_thread << " ";
+    for (auto num_threads: nums_threads) {
+        fout << num_threads << " ";
     }
     fout << std::endl;
-    fout << "elm_cnts: ";
+    fout << "elm_cnts:" << std::endl;
     for (auto elm_cnt: elm_cnts) {
-        fout << elm_cnt << " ";
+        fout << std::setw(12) << elm_cnt;
     }
     fout << std::endl << "timings:" << std::endl;
     for (const auto &t_row: timings) {
         for (const auto &timing: t_row) {
-            fout << timing << " ";
+            fout << std::setw(12) << std::setprecision(8) << std::fixed << timing;
         }
         fout << std::endl;
     }
