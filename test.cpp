@@ -17,7 +17,11 @@ time_testing(const std::vector<size_t> &nums_threads,
             // measure start time
             double start = omp_get_wtime();
 
-            q_sort(data, elm_cnt - 1, num_threads);
+	    #pragma omp parallel num_threads(num_threads) shared(data)
+	    {
+		#pragma omp single nowait
+                q_sort(data, elm_cnt - 1, num_threads);
+	    }
 
             // measure end time
             double end = omp_get_wtime();
