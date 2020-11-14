@@ -2,11 +2,11 @@
 #include <iostream>
 #include <string>
 
-void
-q_sort(int *data, long long end, size_t n_threads)
-{
-    std::cout << std::string(std::to_string(omp_get_thread_num()) + "\n");
+constexpr long long LIMIT{ 1000 };
 
+void
+q_sort(int *data, long long end)
+{
     long long forw = 0;
     long long backw = end;
 
@@ -27,12 +27,20 @@ q_sort(int *data, long long end, size_t n_threads)
     } 
 
     if (backw > 0) {
-        #pragma omp task shared(data) firstprivate(forw, backw)
-        q_sort(data, backw);
+        if (backw < LIMIT) {
+            q_sort(data, backw);
+        } else {
+            #pragma omp task shared(data) firstprivate(forw, backw)
+            q_sort(data, backw);
+        }
     }
     if (forw < end) {
-        #pragma omp task shared(data) firstprivate(forw, backw)
-        q_sort(data + forw, end - forw);
+        if (end - forw < LIMIT) {
+            q_sort(data + forw, end - forw);
+        } else {
+            #pragma omp task shared(data) firstprivate(forw, backw)
+            q_sort(data + forw, end - forw);
+        }
     }
     #pragma omp taskwait
 }

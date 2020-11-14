@@ -5,6 +5,6 @@
 #include <omp.h>
 
 void
-q_sort(int *, long long, size_t = 4);
+q_sort(int *, long long);
 
 #endif
