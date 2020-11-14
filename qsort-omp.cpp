@@ -2,10 +2,8 @@
 #include <iostream>
 #include <string>
 
-constexpr long long LIMIT{ 1000 };
-
 void
-q_sort(int *data, long long end)
+q_sort(int *data, long long end, long long limit)
 {
     long long forw = 0;
     long long backw = end;
@@ -27,21 +25,20 @@ q_sort(int *data, long long end)
     } 
 
     if (backw > 0) {
-        if (backw < LIMIT) {
-            q_sort(data, backw);
+        if (backw < limit) {
+            q_sort(data, backw, limit);
         } else {
             #pragma omp task shared(data) firstprivate(forw, backw)
-            q_sort(data, backw);
+            q_sort(data, backw, limit);
         }
     }
     if (forw < end) {
-        if (end - forw < LIMIT) {
-            q_sort(data + forw, end - forw);
+        if (end - forw < limit) {
+            q_sort(data + forw, end - forw, limit);
         } else {
             #pragma omp task shared(data) firstprivate(forw, backw)
-            q_sort(data + forw, end - forw);
+            q_sort(data + forw, end - forw, limit);
         }
     }
     #pragma omp taskwait
 }
-
