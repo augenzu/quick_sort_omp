@@ -5,7 +5,6 @@
 *~
 
 # executable files
-*.out
 */main
 */test
 
