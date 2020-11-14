@@ -14,19 +14,16 @@ time_testing(const std::vector<size_t> &nums_threads,
         for (const auto &elm_cnt : elm_cnts) {
             int *data = test_data(elm_cnt);
 
-            // measure start cpu time
-            clock_t start = clock();
+            // measure start time
+            double start = omp_get_wtime();
 
-            q_sort(data, elm_cnt, num_threads);
-
-            // we assume here that q_sort function has already been tested
-            // and hence result data doesn't need to to be checked for non-decreasing 
+            q_sort(data, elm_cnt - 1, num_threads);
 
             // measure end time
-            clock_t end = clock();
+            double end = omp_get_wtime();
 
             // calculate the difference & store it
-            double elapsed = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+            double elapsed = end - start;
             timings.back().push_back(elapsed);
 
             delete[] data;

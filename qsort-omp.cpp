@@ -1,7 +1,7 @@
 #include "qsort-omp.h"
 
 void 
-q_sort_iter(int *data, long long end) 
+q_sort(int *data, long long end, size_t n_threads) 
 {
     long long forw = 0;
     long long backw = end;
@@ -22,31 +22,19 @@ q_sort_iter(int *data, long long end)
         }
     } 
 
-    #pragma omp task shared(data) firstprivate(forw, backw)
+    #pragma omp parallel sections num_threads(n_threads)
     {
-        if (backw > 0) {
-            q_sort_iter(data, backw);
-        }
-    }
-
-    #pragma omp task shared(data) firstprivate(forw, backw)
-    {
-        if (forw < end) {
-            q_sort_iter(data + forw, end - forw);
-        }
-    }
-
-    #pragma omp taskwait
-}
-
-void 
-q_sort(int *data, long long end, size_t n_threads) 
-{
-    #pragma omp parallel num_threads(n_threads) shared(data)
-    {
-        #pragma omp single nowait
+        #pragma omp section // shared(data) firstprivate(forw, backw)
         {
-            q_sort_iter(data, end);
+            if (backw > 0) {
+                q_sort(data, backw);
+            }
+        }
+        #pragma omp section // shared(data) firstprivate(forw, backw)
+        {
+            if (forw < end) {
+                q_sort(data + forw, end - forw);
+            }
         }
     }
 }
