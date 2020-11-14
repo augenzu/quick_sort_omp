@@ -14,12 +14,4 @@ void
 time_testing(const std::vector<size_t> &, const std::vector<size_t> &,
         const std::string &);
 
-//------------------------------------------------------------------
-
-
-void
-print(int *, size_t);
-void
-testing();
-
 #endif
