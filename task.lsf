@@ -1,6 +1,6 @@
-#BSUB -n 1
+#BSUB -n 12
 #BSUB -W 00:01
 #BSUB -o bsub-report.out
 #BSUB -e bsub-report.err
 #BSUB -R "span[hosts=1]"
-OMP_NUM_THREADS=1 ./main 19-11-20 1
+OMP_NUM_THREADS=64 ./main 19-11-20 12
