@@ -12,6 +12,6 @@
 
 void
 time_testing(const std::vector<size_t> &, 
-        const std::string &, long long);
+        const std::string &, size_t, long long);
 
 #endif

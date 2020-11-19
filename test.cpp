@@ -3,7 +3,7 @@
 
 void
 time_testing(const std::vector<size_t> &elm_cnts,
-        const std::string &fname,
+        const std::string &fname, size_t num_procs,
         long long limit)
 {    
     // this is what we will return from this function
@@ -35,7 +35,8 @@ time_testing(const std::vector<size_t> &elm_cnts,
     std::ofstream fout(fname, std::ios::app);
 
     // save timings to file
-    fout << std::setw(2) << omp_get_num_procs();
+    // fout << std::setw(2) << omp_get_num_procs();
+    fout << std::setw(2) << num_procs;
     fout << std::setw(4) << omp_get_max_threads();
     for (auto timing: timings) {
         fout << std::setw(12) << std::setprecision(8) << std::fixed << timing;
