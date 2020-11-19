@@ -2,8 +2,9 @@
 #include <iomanip>
 
 void
-time_testing(long long limit, 
-        const std::vector<size_t> &elm_cnts)
+time_testing(const std::vector<size_t> &elm_cnts,
+        const std::string &fname,
+        long long limit)
 {    
     // this is what we will return from this function
     // and exactly what we wanna get from this all stuff
@@ -31,8 +32,13 @@ time_testing(long long limit,
         delete[] data;
     }
 
-    // save timings
+    std::ofstream fout(fname, std::ios::app);
+
+    // save timings to file
+    fout << std::setw(2) << omp_get_num_procs();
+    fout << std::setw(4) << omp_get_max_threads();
     for (auto timing: timings) {
-        std::cout << std::setw(12) << std::setprecision(8) << std::fixed << timing;
+        fout << std::setw(12) << std::setprecision(8) << std::fixed << timing;
     }
+    fout << std::endl;
 }
