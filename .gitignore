@@ -5,8 +5,8 @@
 *~
 
 # executable files
-*/main
-*/test
+main
+*.out
 
 # .vscode settings
 **/.vscode/

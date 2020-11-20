@@ -35,7 +35,6 @@ time_testing(const std::vector<size_t> &elm_cnts,
     std::ofstream fout(fname, std::ios::app);
 
     // save timings to file
-    // fout << std::setw(2) << omp_get_num_procs();
     fout << std::setw(2) << num_procs;
     fout << std::setw(4) << omp_get_max_threads();
     for (auto timing: timings) {

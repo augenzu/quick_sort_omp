@@ -1,5 +1,9 @@
 import os
+import time
 
+TRY_NUM = 5
+TIMINGS_DIR = 'timings/'
+TIMINGS_FILE = '20-11-20__' + str(TRY_NUM)
 
 pattern = \
 '''
@@ -25,7 +29,8 @@ for num_procs in [1, 2, 4, 6, 8, 10, 12, 16]:
     for num_threads in nums_threads:
         task = '#BSUB -n ' + str(num_procs) + pattern + \
                 'OMP_NUM_THREADS=' + str(num_threads) + \
-                ' ./main 19-11-20__1 ' + str(num_procs)
+                ' ./main ' + TIMINGS_FILE + ' ' + str(num_procs)
         with open('task.lsf', 'w') as fout:
             fout.write(task)
         os.system(cmd)
+        time.sleep(1)
