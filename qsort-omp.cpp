@@ -41,4 +41,21 @@ q_sort(int *data, long long end, long long limit)
         }
     }
     #pragma omp taskwait
+<<<<<<< HEAD
 }
+=======
+}
+
+void 
+q_sort(int *data, long long end) 
+{
+    #pragma omp parallel num_threads(32) shared(data)
+    // then set it to 2; 4; 8; 16; ...
+    {
+        #pragma omp single nowait
+        {
+            q_sort_iter(data, end);
+        }
+    }
+}
+>>>>>>> master

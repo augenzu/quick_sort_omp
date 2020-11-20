@@ -11,7 +11,11 @@
 #include <vector>
 
 void
+<<<<<<< HEAD
 time_testing(const std::vector<size_t> &, 
         const std::string &, size_t, long long);
+=======
+time_testing(const std::vector<size_t> &, const std::string &);
+>>>>>>> master
 
 #endif

@@ -6,6 +6,7 @@ constexpr long long LIMIT{1024};
 int
 main(int argc, char **argv)
 {
+<<<<<<< HEAD
     std::vector<size_t> elm_cnts{ 16000, 32000, 64000, 128000, 256000, 512000, 
             1024000, 2048000, 4096000, 8192000 };
     std::string fname{std::string("timings/") + argv[1] + ".txt"};
@@ -18,6 +19,12 @@ main(int argc, char **argv)
     }
 
     time_testing(elm_cnts, fname, num_procs, limit);
+=======
+    std::vector<size_t> elm_cnts{ 1000, 2000, 4000, 8000, 16000, 32000, 64000, 128000, 256000 };
+    std::string fname = std::string("timings/") + argv[1] + ".txt";
+
+    time_testing(elm_cnts, fname);
+>>>>>>> master
     
     return 0;
 }
