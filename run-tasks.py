@@ -3,7 +3,7 @@ import time
 
 TRY_NUM = 4
 TIMINGS_DIR = 'timings/'
-TIMINGS_FILE = '20-11-20__' + str(TRY_NUM)
+TIMINGS_FILE = '20-11-21__' + str(TRY_NUM)
 
 pattern = \
 '''
@@ -16,7 +16,7 @@ pattern = \
 cmd = 'bsub < task.lsf'
 
 
-for num_procs in [1, 2, 4, 6, 8, 10, 12, 16]:
+for num_procs in [1, 2, 4, 6, 8, 10, 12, 16, 18, 20, 22, 24]:
     nsteps = 10
     start = ((num_procs + 3) // 4) * 4
     end = start * 16
