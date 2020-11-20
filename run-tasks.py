@@ -1,7 +1,7 @@
 import os
 import time
 
-TRY_NUM = '3_5'
+TRY_NUM = '3_1'
 TIMINGS_DIR = 'timings/'
 TIMINGS_FILE = '20-11-20__' + str(TRY_NUM)
 
@@ -16,7 +16,7 @@ pattern = \
 cmd = 'bsub < task.lsf'
 
 
-for num_procs in [1, 2, 4, 6, 8, 10, 12, 16, 18, 20, 22, 24]:
+for num_procs in [1, 2, 4, 6, 8, 10, 12, 16, 14, 18, 20, 22, 24]:
     nums_threads = [num_procs, num_procs * 2, num_procs * 4, num_procs * 8, num_procs * 16, num_procs * 32]
     for num_threads in nums_threads:
         task = '#BSUB -n ' + str(num_procs) + pattern + \
