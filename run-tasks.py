@@ -1,9 +1,9 @@
 import os
 import time
 
-TRY_NUM = 4
+TRY_NUM = '3__1'
 TIMINGS_DIR = 'timings/'
-TIMINGS_FILE = '20-11-21__' + str(TRY_NUM)
+TIMINGS_FILE = '20-11-20__' + str(TRY_NUM)
 
 pattern = \
 '''
@@ -17,15 +17,7 @@ cmd = 'bsub < task.lsf'
 
 
 for num_procs in [1, 2, 4, 6, 8, 10, 12, 16, 18, 20, 22, 24]:
-    nsteps = 10
-    start = ((num_procs + 3) // 4) * 4
-    end = start * 16
-    step = (end - start) // nsteps
-    nums_threads = list(range(start, end + 1, step))
-    if num_procs not in nums_threads:
-        nums_threads = [num_procs] + nums_threads
-    else:
-        nums_threads += [nums_threads[-1]]
+    nums_threads = [num_procs, num_procs * 2, num_procs * 4, num_procs * 8, num_procs * 16, num_procs * 32]
     for num_threads in nums_threads:
         task = '#BSUB -n ' + str(num_procs) + pattern + \
                 'OMP_NUM_THREADS=' + str(num_threads) + \
