@@ -1,7 +1,7 @@
 import os
 import time
 
-TRY_NUM = 5
+TRY_NUM = 4
 TIMINGS_DIR = 'timings/'
 TIMINGS_FILE = '20-11-20__' + str(TRY_NUM)
 
