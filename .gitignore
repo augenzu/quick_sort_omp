@@ -8,5 +8,8 @@
 main
 *.out
 
+# bsub tasks
+*.lsf
+
 # .vscode settings
 **/.vscode/
