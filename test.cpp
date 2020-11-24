@@ -5,12 +5,7 @@ void
 time_testing(const std::vector<size_t> &elm_cnts,
         const std::string &fname, size_t num_procs,
         long long limit)
-{    
-    // #pragma omp parallel num_threads(1)
-    // then set it to 2; 4; 8; 16; ...
-    
-    // this is what we will return from this function
-    // and exactly what we wanna get from this all stuff
+{
     std::vector<double> timings{};
 
     for (auto elm_cnt : elm_cnts) {
